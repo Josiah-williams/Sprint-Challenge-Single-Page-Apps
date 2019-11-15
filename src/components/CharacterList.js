@@ -1,50 +1,44 @@
 import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import {Link} from "react-router-dom";
+export default function CharacterList() {
 
-function CharacterList() {
 
-  const[character, setCharacter] = useState([])
   // TODO: Add useState to track data from useEffect
-
+  const [character, setCharacter] = useState([]);
   useEffect(() => {
-    Axios
-    //  .get('https://rickandmortyapi.com/api/character/')
-    .then(response => {
-      setCharacter(response.data.results)
+   
+ 
+        // setCharacter(response.data.results)
       // console.log(response.data.results)
-    })
-    .catch(error =>{
-      console.error('Server error', error)
-    })
+    
+ 
 
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
-
-  return (
+    axios
+  .get('https://rickandmortyapi.com/api/character/')
+  .then((response) => {
+    setCharacter(response.data.results);
+console.log(response);
+  })
+  .catch(error => {
+    console.error('Server Error', error);
+  });
+}, []);
+ return (
     <section className="character-list">
-       <Link to= {"/Home"}>
-      <button>Home</button>
-      </Link>
-      <h2>The Toons!!!</h2>
-      <div>
-        {character.map(char => (
-        <CharacterCard 
-        key = {char.id} 
-        name = {char.name} 
-        species={char.species} 
-        status={char.status} 
-        />
+      <Link to= "/"><button>Home</button></Link>
+       <Link to="/Search"><button>Search
+          </button></Link>
+      {character.map(ind => (
 
-  ))}
-      </div>
-      <Link to= {"/Home"}>
-      <button>Home</button>
-      </Link>
-    </section>
-  );
-}
+            <CharacterCard  key={ind.id} name={ind.name}  species={ind.species} status={ind.status} /> 
 
-export default CharacterList;
+
+      ))}
+      </section>
+    );
+    }
+  

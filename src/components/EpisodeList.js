@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EpisodeCard from './EpisodeCard';
+import {Link} from "react-router-dom"
 
 
 function EpisodesList(props) {
@@ -19,6 +20,7 @@ function EpisodesList(props) {
 
     return(
         <section className='episode-list grid-view'>
+      <Link to= "/"><button>Home</button></Link>
             {episodes.map(episode => (
               <EpisodeCard 
               key={episode.id}
@@ -30,5 +32,5 @@ function EpisodesList(props) {
         </section>
           );
         } 
-
+        
 export default EpisodesList;

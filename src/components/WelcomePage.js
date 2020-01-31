@@ -12,7 +12,7 @@ const Page = styles.section`
 display:flex;
 justify-content:center;`
 const Img = styles.img`
-margin-left: 15%;
+margin-left: 25%;
 margin-top: 10%;`
 
 
@@ -28,6 +28,11 @@ export default function WelcomePage() {
           </Buttons></Link>
           <Link to="/Search"><Buttons>Search
           </Buttons></Link>
+          <Link to="Location"><Buttons>Location
+            </Buttons></Link>
+            <Link to="Episode"><Buttons>Episode
+              </Buttons></Link>
+          
 
         <Img
           className="main-img"
